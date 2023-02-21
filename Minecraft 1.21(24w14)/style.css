@@ -9,8 +9,20 @@ body{
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: url("grass.png");
+	/*background: url("grass.png");*/
 	overflow: hidden;
+}
+
+.video{
+	position: relative;
+	padding-bottom: 56.25%;
+}
+
+.video_media{
+	height: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .road{
@@ -44,6 +56,7 @@ body{
 
 .police{
 	position: absolute;
+	left: -100px;
 	width: 200px;
 	height: 80px;
 	background: #3f4c54;
@@ -54,6 +67,176 @@ body{
 	z-index: 10;
 	animation: animate_police 3s linear infinite;
 }
+
+.police:nth-child(2){
+	left: 200px;
+	animation-delay: -4.5s;
+}
+
+.taxi{
+	position: absolute;
+	left: 500px;
+	width: 200px;
+	height: 80px;
+	background: #f4b503;
+	border-radius: 10px;
+	box-shadow: -10px 10px rgba(0, 0, 0, 0.1);
+	transform-style: preserve-3d;
+	perspective: 800px;
+	z-index: 10;
+	animation: animate_taxi 3s linear infinite;
+	animation-delay: -5s;
+}
+
+@keyframes animate_taxi{
+	0%{
+		transform: translateX(20px) translateY(20px);
+	}
+	25%{
+		transform: translateX(-50px) translateY(0px);
+	}
+	50%{
+		transform: translateX(20px) translateY(-20px);
+	}
+	75%{
+		transform: translateX(50px) translateY(0px);
+	}
+	100%{
+		transform: translateX(20px) translateY(20px);
+	}
+}
+
+.taxi::before{
+	content: '';
+	position: absolute;
+	top: 12px;
+	left: 2px;
+	width:5px;
+	height: 15px;
+	border-radius: 2px;
+	background: red;
+	box-shadow: 0 42px red;
+}
+
+.taxi::after{
+	content: '';
+	position: absolute;
+	top: 10px;
+	right: 2px;
+	width: 6px;
+	height: 16px;
+	border-radius: 2px;
+	background: white;
+	box-shadow: 0 44px white;
+}
+
+.taxi span{
+	position:absolute;
+	inset: 5px 10px;
+	background: #fdd206;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.taxi span::before{
+	content: 'TAXI';
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	transform:  translate(-50%, -50%) rotate(90deg);
+	color: black;
+	font-size: 15px;
+	font-weight: 1000;
+	letter-spacing: 0.1em;
+}
+.taxi span::after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	width: 6px;
+	height: 10px;
+	background: #29282b;
+	box-shadow: 0 -10px #1f5fff, 0 10px red;
+}
+
+.taxi span b{
+	position: absolute;
+	inset: 0 30px;
+	background: black;
+	border-radius: 10px;
+}
+
+.taxi span b::before{
+	content: '';
+	position: absolute;
+	inset:  6px 25px;
+	background: #fdd206;
+	border-radius: 10px;
+}
+.taxi span b::after{
+	content: '';
+	position: absolute;
+	inset:  0 58px;
+	background: #fdd206;
+	border-radius: 10px;
+}
+.taxi span i{
+	position: absolute;
+	inset:  0;
+}
+
+.taxi span i::before{
+	content: '';
+	position: absolute;
+	top: 7px;
+	left: 20px;
+	width: 40px;
+	height: 5px;
+	background: #fdd206;
+	transform-origin: right;
+	transform: rotate(15deg);
+	box-shadow: 100px 34px #fdd206;
+}
+.taxi span i::after{
+	content: '';
+	position: absolute;
+	bottom: 7px;
+	left: 20px;
+	width: 40px;
+	height: 5px;
+	background: #fdd206;
+	transform-origin: right;
+	transform: rotate(-15deg);
+	box-shadow: 100px -34px #fdd206;
+}
+
+.taxi .side_mirror{
+	position: absolute;
+	inset: 0;
+}
+.taxi .side_mirror::before{
+	content: '';
+	position: absolute;
+	top: -8px;
+	right: 40px;
+	width: 5px;
+	height: 10px;
+	background: #fdd206;
+	border-top-right-radius: 10px;
+}
+.taxi .side_mirror::after{
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	right: 40px;
+	width: 5px;
+	height: 10px;
+	background: #fdd206;
+	border-bottom-right-radius: 10px;
+}
+
 
 @keyframes animate_police{
 	0%{
@@ -85,7 +268,7 @@ body{
 	box-shadow: 0 42px red;
 }
 
-.police::after {
+.police::after{
 	content: '';
 	position: absolute;
 	top: 10px;
